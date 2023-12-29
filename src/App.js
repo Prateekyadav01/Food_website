@@ -2,20 +2,15 @@ import React from "react";
 
 
 
-const Title =()=>(
-  <h1>
-    hello
-  </h1>
-);
-
 const burgerKing ={
-  name:"",
+  name:"Prateek",
   image:"",
   cusines:"",
-}
+};
+
 const RestaurantCard = ()=>{
   return(
-    <div>
+    <div className="text-black">
       <img src={burgerKing.image}></img>
       <h1>{burgerKing.name}</h1>
 
@@ -38,10 +33,17 @@ const Header = () =>{
   )
 };
 
+const Body = ()=>{
+  return(
+  <RestaurantCard/>
+  );
+}
+
 const Apply = () =>{
   return(
     <>
     <Header/>
+    <Body/>
     </>
   )
 }
