@@ -3,6 +3,7 @@ import { restaurantList } from "./Config";
 import RestaurantCard from "./RestaurantCard";
 // import {swiggy_api_URL} from "./Config";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 function filter(searchBox, restaurants) {
   const filterData = restaurants.filter((restaurant) =>
@@ -68,9 +69,11 @@ const Body = () => {
       </div>
       <div className="flex flex-row flex-wrap gap-2 ">
         {
-          restaurantFilterData.map((restaurant) => (
-            <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
-          ))}
+          restaurantFilterData.map((restaurant) => {
+          return (   <Link to={"/restaurant/"+restaurant.data.id} key={restaurant.data.id}>
+             <RestaurantCard {...restaurant.data}/>
+          </Link>
+        )})}
       </div>
     </>
   );
