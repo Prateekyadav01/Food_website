@@ -7,6 +7,7 @@ import Error from "./components/Error";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Profile from "./components/Profile";
 
 const Apply = () =>{
   return(
@@ -31,6 +32,15 @@ const appRouter = createBrowserRouter([
       {
         path:"/about",
         element:<About/>,
+        children:[
+          {
+            path:"profile", 
+            // why we cannot use / over there because it create an simple link with parent 
+            //  localhost:3000/about/profile
+            // if we use / it use localhost:3000/profile
+            element:<Profile/>
+          }
+        ]
       },
       {
         path:"/contact",

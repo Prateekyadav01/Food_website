@@ -14,7 +14,7 @@ const RestaurantMenu =()=>{
         const callingApi = await fetch(
                 "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.8467126&lng=80.9460872&restaurantId=789168&catalog_qa=undefined&submitAction=ENTER"
             );
-        const data = await callingApi.json();
+        const data = await callingApi.json();   
         console.log(data);
         // const output = json?.data?.cards?.card?.card;
         // console.log(data.data.cards);
