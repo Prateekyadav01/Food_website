@@ -1,4 +1,4 @@
-import React from "react";
+
 
 // Image CDN URL for Restaurant card
 export const IMG_CDN_URL =

@@ -4,14 +4,7 @@ import RestaurantCard from "./RestaurantCard";
 // import {swiggy_api_URL} from "./Config";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
-function filter(searchBox, restaurants) {
-  const filterData = restaurants.filter((restaurant) =>
-    restaurant.data.name.includes(searchBox)
-  );
-  console.log(filterData);
-  return filterData;
-}
+import {filter} from "../utils/Helper"
 
 const Body = () => {
   const [searchBox, setSearchBox] = useState("");
