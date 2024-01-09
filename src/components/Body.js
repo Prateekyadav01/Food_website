@@ -4,7 +4,8 @@ import RestaurantCard from "./RestaurantCard";
 // import {swiggy_api_URL} from "./Config";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import {filter} from "../utils/Helper"
+import {filter} from "../utils/Helper";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
   const [searchBox, setSearchBox] = useState("");
@@ -18,6 +19,15 @@ const Body = () => {
     // console.log("change");
     getData();
   }, []);
+
+  const online = useOnline();
+  if(!online){
+    return <h1>Please connect to you connection</h1>
+  }
+
+  if(!allRestaurants){
+    return null;
+  }
 
   async function getData() {
     try {
