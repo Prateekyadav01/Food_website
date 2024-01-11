@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { restaurantList } from "./Config";
 import RestaurantCard from "./RestaurantCard";
 // import {swiggy_api_URL} from "./Config";
@@ -6,11 +6,14 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import {filter} from "../utils/Helper";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UseContext";
 
 const Body = () => {
   const [searchBox, setSearchBox] = useState("");
   const [allRestaurants, setALLRestaurant] = useState([]);
   const [restaurantFilterData, setRestaurantFilterData]= useState([]);
+  const{user,setUser}=useContext(UserContext);
+
   const searchBoxHandler = (e) => {
     setSearchBox(e.target.value);
   };
@@ -69,6 +72,19 @@ const Body = () => {
         >
           Search
         </button>
+
+        <input value={user.name} onChange={(e)=>{
+          setUser({
+            ...user,
+            name:e.target.value
+          })
+        }}></input>
+        <input value={user.email} onChange={(e)=>{
+          setUser({
+            ...user,
+            email:e.target.value
+          })
+        }}></input>
       </div>
       <div className="flex flex-row flex-wrap gap-2 ">
         {

@@ -15,61 +15,36 @@ const Section =({title ,description,isVisible,setIsVisible})=>{
     )
 }
 const Instamart =()=>{
-    const [visible ,setVisible] = useState({
-        showAbout:false,
-        showContact:false,
-        showPhone:false,
-        showButton:false
-    })
+    const [visible ,setVisible] = useState("about")
     return (
         <div>
             <Section 
-              title="ABout us" 
+              title="About us" 
               description="This is About of Instamart"
-              isVisible={visible.showAbout}
+              isVisible={visible==="about"}
               setIsVisible={()=>{
-                setVisible({
-                    showAbout:true,
-                    showContact:false,
-                    showPhone:false,
-                    showButton:false
-                })
+                setVisible("about")
               }}/>
             <Section 
               title="contact"
                description="This is About of Instamart"
-               isVisible={visible.showContact}
+               isVisible={visible==="contact"}
               setIsVisible={()=>{
-                setVisible({
-                    showAbout:false,
-                    showContact:true,
-                    showPhone:false,
-                    showButton:false
-                })
+                setVisible("contact")
               }}/>
             <Section 
               title="phone" 
               description="This is About of Instamart"
-              isVisible={visible.showPhone}
+              isVisible={visible==="phone"}
               setIsVisible={()=>{
-                setVisible({
-                    showAbout:false,
-                    showContact:false,
-                    showPhone:true,
-                    showButton:false
-                })
+                setVisible("phone")
               }}/>
             <Section 
               title="button" 
                description="This is About of Instamart"
-               isVisible={visible.showPhone}
+               isVisible={visible==="button"}
               setIsVisible={()=>{
-                setVisible({
-                    showAbout:false,
-                    showContact:false,
-                    showPhone:false,
-                    showButton:true
-                })
+                setVisible("button")
               }}/>
         </div>
     )
