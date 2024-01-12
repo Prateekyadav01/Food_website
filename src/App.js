@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import UserContext from "./utils/UseContext";
+import { Provider } from "react-redux";
 // import Instamart from "./components/Instmart";
 
 
@@ -20,7 +21,7 @@ const Apply = () =>{
     email:"support@gmail.com"
   })
   return(
-    <>
+    <Provider >
       <UserContext.Provider
       value={{
         user:user,
@@ -30,7 +31,7 @@ const Apply = () =>{
          <Outlet/>
          <Footer/>
       </UserContext.Provider>
-    </>
+    </Provider>
   )
 }
 
