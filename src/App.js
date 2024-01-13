@@ -1,82 +1,69 @@
-import React, { Suspense ,lazy, useState } from "react";
+import React, { lazy, Suspense } from "react";
+// import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { Outlet, createBrowserRouter } from "react-router-dom";
+// import Footer from "./components/Footer";
 import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
-import Profile from "./components/Profile";
-import UserContext from "./utils/UseContext";
+// import Instamart from "./components/Instamart";
 import { Provider } from "react-redux";
 import store from "./utils/store";
-// import Instamart from "./components/Instmart";
+import Cart from "./components/Cart";
 
 
 const Instamart= lazy(()=>import("./components/Instmart"));
 
 const Apply = () =>{
-  const [user,setUser]=useState({
-    name:"support",
-    email:"support@gmail.com"
-  })
-  return(
-    <Provider store={store} >
-      <UserContext.Provider
-      value={{
-        user:user,
-        setUser:setUser
-      }}>
-         <Header/>
-         <Outlet/>
-         <Footer/>
-      </UserContext.Provider>
-    </Provider>
-  )
-}
+  return (
+    <>
+      <Provider store={store}>
+        <Header />
+        <Outlet />
+        {/* <Footer /> */}
+      </Provider>
+    </>
+  );
+};
 
 const appRouter = createBrowserRouter([
   {
-    path:"/",
-    element:<Apply/>,
-    errorElement:<Error/>,
-    children:[
+    path: "/",
+    element: <Apply />,
+    errorElement: <Error />,
+    children: [
       {
-        path:"/",
-        element:<Body/>,
+        path: "/",
+        element: <Body />,
       },
       {
-        path:"/about",
-        element:<About/>,
-        children:[
-          {
-            path:"profile", 
-            // why we cannot use / over there because it create an simple link with parent 
-            //  localhost:3000/about/profile
-            // if we use / it use localhost:3000/profile
-            element:<Profile/>
-          }
-        ]
+        path: "/about",
+        element: <About />,
       },
       {
-        path:"/contact",
-        element:<Contact/>,
+        path: "/contact",
+        element: <Contact />,
       },
       {
-        path:"/restaurant/:Id",
-        element:<RestaurantMenu/>,
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu />,
       },
       {
-        path:"/instamart",
-        element:(
-          <Suspense>
-          <Instamart/>
-          </Suspense>
-        )
+        path: "/cart",
+        element: <Cart />,
       },
-    ]
-  }
+      // {
+      //   path: "/instamart",
+      //   element: (
+      //     <Suspense>
+      //       <Instamart />
+      //     </Suspense>
+      //   ),
+      // },
+    ],
+  },
  
 ])
 
