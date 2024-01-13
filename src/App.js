@@ -10,6 +10,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import UserContext from "./utils/UseContext";
 import { Provider } from "react-redux";
+import store from "./utils/store";
 // import Instamart from "./components/Instmart";
 
 
@@ -21,7 +22,7 @@ const Apply = () =>{
     email:"support@gmail.com"
   })
   return(
-    <Provider >
+    <Provider store={store} >
       <UserContext.Provider
       value={{
         user:user,
