@@ -1,47 +1,72 @@
-import { useContext, useState } from "react";
+// import React from "react";
+import logo from "../assests/download.png";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import logo from "../assests/download.png"
-import useOnline from "../utils/useOnline";
-import UserContext from "../utils/UseContext";
-// import useAuth from "../utils/useAuth";
 
-const Header = () =>{
-  const [isLoggin , setIsLogin] = useState(true);  
-  const isOnline = useOnline();
-  const {user} = useContext(UserContext);
-  // const login= useAuth();
-    return (
-      <div className="flex justify-between m-7 border border-solid border-black p-4 ">
-         <Link to={"/"}><img src={logo} className="w-28"alt="Not loaded" /></Link>
-        <ul className="flex flex-row justify-end gap-5 ">
-          <Link to={"/about"}><li>About</li></Link>
-          <Link to={"/contact"}><li>Contact</li></Link>
-          <Link to={"/instamart"}><li>Instamart</li></Link>
-          <li>Phone</li>
-          <li>Services</li>
-        </ul>
+const Header = () => {
+  const [isLoggedin, setIsLoggedin] = useState(true);
 
+  const cartItems = useSelector((store) => store.cart.items);
 
-        <h1>{isOnline ? "✅" :"🔴"}</h1>
-        <h1>{user.name}</h1>
-        {
-        isLoggin?
-        (<button onClick={()=>{setIsLogin(false)}}>Login</button>)
+  return (
+    <>
+      <div className="header">
+        <a href="/">
+          {/* <h2>MunchMate</h2> */}
+          <img src={logo} alt="Logo" className="logo" />
+        </a>
 
-         :
-          (<button onClick={()=>{setIsLogin(true)}}>Logout</button>)
-
-         }
-         {/* {
-          login ? (
-             <button>Logout</button>
-          ): (<div>
-              <button>login</button>
-              </div>)
-         } */}
+        <div className="nav-items">
+          <ul>
+            <li>
+              <Link to="/" className="Link-tag">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="Link-tag">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="Link-tag">
+                Contact
+              </Link>
+            </li>
+            {/* <li>
+              <Link to="/instamart" className="Link-tag">
+                InstaMart
+              </Link>
+            </li> */}
+            <li>
+              <Link to="/cart" className="Link-tag">
+                Cart - {cartItems ? cartItems.length : 0}
+              </Link>
+            </li>
+            <li className="log-btn">
+              {/* use conditional rendering for login and logout */}
+              {isLoggedin ? (
+                <button
+                  className="logout-btn"
+                  onClick={() => setIsLoggedin(false)}
+                >
+                  Logout
+                </button>
+              ) : (
+                <button
+                  className="login-btn"
+                  onClick={() => setIsLoggedin(true)}
+                >
+                  Login
+                </button>
+              )}
+            </li>
+          </ul>
+        </div>
       </div>
-    )
-  };
+    </>
+  );
+};
 
-  
-export default Header
+export default Header;
