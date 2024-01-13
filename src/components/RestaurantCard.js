@@ -1,26 +1,45 @@
-
-import { useContext } from "react";
 import { IMG_CDN_URL } from "./Config";
-import UserContext from "../utils/UseContext";
 
-const RestaurantCard = ( {
-    name,
-    cusines,
-    cloudinaryImageId,
-    lastMileTravelString,
-})=>{
-  const {user}= useContext(UserContext);
-    return(
-      <div className="text-black flex flex-col  p-6  border border-solid border-black">
-        <img src={IMG_CDN_URL +cloudinaryImageId} className="w-32 h-32"></img>
-        <h2>{name}</h2>
-        {/* <h3>{cusines.join(", ")}</h3> */}
-        <h4>{lastMileTravelString}</h4>
-        <h4>{user.name} - {user.email}</h4>
-      </div>
-    );
-  }
-  
+// Restaurant card component: Image, name, cuisine
+const RestaurantCard = ({
+  cloudinaryImageId,
+  name,
+  cuisines,
+  areaName,
+  sla,
+  costForTwo,
+  avgRatingString,
+}) => {
+  return (
+    <div className="card">
+      <img src={IMG_CDN_URL + cloudinaryImageId} />
+      <h3>{name}</h3>
+      <h5>{cuisines.join(", ")}</h5>
+      <h5>{areaName}</h5>
+      <span>
+        <h4
+          style={
+            avgRatingString < 3
+              ? { backgroundColor: "var(--light-red)" }
+              : avgRatingString >= 3 && avgRatingString < 4
+              ? { backgroundColor: "var(--light-orange)" }
+              : avgRatingString >= 4
+              ? { backgroundColor: "var(--light-green)" }
+              : avgRatingString === "--"
+              ? { backgroundColor: "white", color: "black" }
+              : { color: "white" }
+          }
+        >
+          <i className="fa-solid fa-star"></i>
+          {avgRatingString}
+        </h4>
+        <h4>•</h4>
+        <h4>{sla?.lastMileTravelString ?? "2.0 km"}</h4>
+        <h4>•</h4>
+        <h4>{costForTwo ?? "₹200 for two"}</h4>
+      </span>
+    </div>
+  );
+};
 
-
-  export default RestaurantCard;
+export default RestaurantCard;
