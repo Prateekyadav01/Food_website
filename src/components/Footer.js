@@ -8,15 +8,15 @@ const Footer = () => {
           title="heart icons"
         ></a>
         <a
-          href="https://github.com/ayushmaan163"
+          href="https://github.com/Prateekyadav01"
           target="_blank"
-          title="Ayushmaan Jaiswal's GitHub Profile"
+          title="Prateek Yadav's GitHub Profile"
         >
-          Ayushmaan Jaiswal
+          Prateek Yadav
         </a>
         <i className="fa-solid fa-copyright"></i>2023
         <strong>
-          Munch<span>Mate</span>
+          Food<span>Villa</span>
         </strong>
       </div>
     );
