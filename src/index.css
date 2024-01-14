@@ -1,4 +1,8 @@
 /* Font family */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
 
 /* Select all CSS Start*/
@@ -72,7 +76,7 @@ a {
   justify-content: space-between;
   align-items: center;
   width: 100vw;
-  height: 80px;
+  height: 90px;
   background-color: #000;
   /* border-radius: 5px; */
   box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2);
@@ -87,7 +91,9 @@ a {
 
 .logo {
   padding: 10px 0 10px 15px;
-  width: 200px;
+  margin-left: 70px;
+  width: 150px;
+  height: 90px;
 }
 
 /* nav items CSS start*/
