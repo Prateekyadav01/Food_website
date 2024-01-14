@@ -22,6 +22,7 @@ const Apply = () =>{
       <Provider store={store}>
         <Header />
         <Outlet />
+        {/* good */}
         {/* <Footer /> */}
       </Provider>
     </>
