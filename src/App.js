@@ -14,6 +14,7 @@ import store from "./utils/store";
 import Cart from "./components/Cart";
 
 
+
 const Instamart= lazy(()=>import("./components/Instmart"));
 
 const Apply = () =>{
@@ -22,6 +23,7 @@ const Apply = () =>{
       <Provider store={store}>
         <Header />
         <Outlet />
+
         {/* good */}
         {/* <Footer /> */}
       </Provider>
